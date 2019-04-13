@@ -38,16 +38,25 @@
                         <img src="{{item.productimg}}" />
                         <article class="shoppingInfo">
                             <h6>{{item.productlongname}}</h6>
+                            {% if item.isxf == True %}
                             <p class="detailTag"><span>精选</span><span>{{item.pedesc}}</span></p>
+                            {% endif %}
                             <span class="unit">{{item.specifics}}</span>
-                            <p class="price"><span>￥{{item.price}}</span><s><span>￥{{item.marketprice}}</span></s></p>
+                            <p class="price"><span>￥{{item.price}}</span>
+                                {% if item.price < item.marketprice %}
+                                <s><span>￥{{item.marketprice}}</span></s>
+                                {% endif %}
+                            </p>
                         </article>
                     </a>
-                    <section>
+                    <section class="productnum">
 						<button ga="{{item.productid}}" class="subShopping">-</button>
 						<span id="{{item.productid}}">{{ item.num|default:0 }}</span>
 						<button ga="{{item.productid}}" class="addShopping">+</button>
 					</section>
+{#                    <section class="shoppingcart">#}
+{#                        <img src="{% static 'mine/img/cart.png' %}" />#}
+{#                    </section>#}
                 </li>
                 {% endfor %}
             </ul>

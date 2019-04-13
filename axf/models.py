@@ -68,6 +68,8 @@ class Goods(models.Model):
     productlongname = models.CharField(max_length=100)
     # 是否精选
     isxf = models.NullBooleanField(default=False)
+    # 是否热销
+    is_sellwell = models.BooleanField(default=False)
     # 是否买一赠一
     pmdesc = models.CharField(max_length=10)
     # 规格
@@ -112,6 +114,13 @@ class User(models.Model):
         u = cls(userAccount = account,userPasswd = passwd,userName=name,userPhone=phone,userAdderss=address,userImg=img,userRank=rank,userToken=token)
         return u
 
+class CartManager1(models.Manager):
+    def get_queryset(self):
+        return super(CartManager1, self).get_queryset().filter(isDelete=False)
+class CartManager2(models.Manager):
+    def get_queryset(self):
+        return super(CartManager2, self).get_queryset().filter(isDelete=True)
+
 class Cart(models.Model):
     userAccount = models.CharField(max_length=20)
     productid = models.CharField(max_length=10)
@@ -122,10 +131,19 @@ class Cart(models.Model):
     productname = models.CharField(max_length=100)
     orderid = models.CharField(max_length=20,default="0")
     isDelete = models.BooleanField(default=False)
-    # objects = CartManager1()
-    # obj2 = CartManager2()
+    objects = CartManager1()
+    obj2 = CartManager2()
     @classmethod
     def createcart(cls,userAccount,productid,productnum,productprice,isChose,productimg,productname,isDelete):
         c = cls(userAccount = userAccount,productid = productid,productnum=productnum,productprice=productprice,isChose=isChose,productimg=productimg,productname=productname,isDelete=isDelete)
         return c
 
+class Order(models.Model):
+    orderid = models.CharField(max_length=20)
+    userid  = models.CharField(max_length=20)
+    progress = models.IntegerField()
+
+    @classmethod
+    def createorder(cls, orderid, userid, progress):
+        o = cls(orderid=orderid, userid=userid, progress=progress)
+        return o

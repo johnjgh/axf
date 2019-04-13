@@ -12,6 +12,7 @@ $(document).ready(function(){
                     //添加成功，把中间的span的innerHTML变成当前的数量
                     document.getElementById(pid).innerHTML = data.data
                     document.getElementById(pid+"price").innerHTML = data.price
+                    document.getElementById('allprice').innerHTML = data.totalprice
                 }
             })
         })
@@ -27,6 +28,8 @@ $(document).ready(function(){
                     //添加成功，把中间的span的innerHTML变成当前的数量
                     document.getElementById(pid).innerHTML = data.data
                     document.getElementById(pid+"price").innerHTML = data.price
+                    document.getElementById('allprice').innerHTML = data.totalprice
+                    document.getElementById('allc').innerHTML = data.allchose
                     if(data.data == 0) {
                         //window.location.href = "http://127.0.0.1:8001/cart/"
                         var li = document.getElementById(pid+"li")
@@ -36,7 +39,6 @@ $(document).ready(function(){
             })
         })
     }
-
 
 
     var ischoses = document.getElementsByClassName("ischose")
@@ -49,11 +51,29 @@ $(document).ready(function(){
                     //window.location.href = "http://127.0.0.1:8001/cart/"
                     var s = document.getElementById(pid+"a")
                     s.innerHTML = data.data
+                    document.getElementById('allprice').innerHTML = data.totalprice
+                    document.getElementById('allc').innerHTML = data.allchose
                 }
             })
         },false)
     }
 
+    var allchoses = document.getElementById('allchose')
+    var itemchoses = document.getElementsByClassName('itemchose')
+    var allc = document.getElementById('allc')
+    allchoses.addEventListener('click', function(){
+        console.log('alsddlepol;')
+        $.post('/changecart/3/', {'chose':allc.innerText}, function(data){
+            if (data.status == 'success'){
+                allc.innerHTML = data.allchose
+                document.getElementById('allprice').innerHTML = data.totalprice
+                for (var k = 0; k < itemchoses.length; k++){
+                    itemchose = itemchoses[k]
+                    itemchose.innerHTML = data.data
+                }
+            }
+        })
+    },false)
 
 
     var ok = document.getElementById("ok")
@@ -62,7 +82,7 @@ $(document).ready(function(){
         if (f){
             $.post("/saveorder/", function(data){
                 if (data.status = "success"){
-                    window.location.href = "http://127.0.0.1:8001/cart/"
+                    window.location.href = "http://127.0.0.1:8000/cart/"
                 }
             })
         }

@@ -8,6 +8,13 @@ $(document).ready(function () {
     typediv.style.display = 'none'
     sortdiv.style.display = 'none'
 
+    // var shoppings = document.getElementsByClassName('shoppingcart')
+    // for (var j = 0; j < shoppings.length; j++){
+    //     shopping = shoppings[j]
+    //     shopping.
+    // }
+
+
     alltypebtn.onclick = showsortbtn.onclick
 
     alltypebtn.addEventListener('click', function () {

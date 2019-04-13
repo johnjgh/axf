@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import Wheel,Nav,Mustbuy,Shop,MainShow,FoodTypes,Goods,User,Cart
+from .models import Wheel,Nav,Mustbuy,Shop,MainShow,FoodTypes,Goods,User,Cart,Order
 from django.http import JsonResponse
 import time,random,os
 from django.conf import settings
+from django.contrib.auth import logout
+from .forms.login import LoginForm
+
 # Create your views here.
 def home(request):
     wheelsList = Wheel.objects.all()
@@ -19,9 +22,15 @@ def home(request):
 def market(request, categoryid, cid, sortid):
     leftSlider = FoodTypes.objects.all()
     if not cid:
-        productList = Goods.objects.filter(categoryid=categoryid)
+        if categoryid == '104749':
+            productList = Goods.objects.filter(is_sellwell=True)
+        else:
+            productList = Goods.objects.filter(categoryid=categoryid)
     else:
-        productList = Goods.objects.filter(categoryid=categoryid, childcid=cid)
+        if categoryid == '104749':
+            productList = Goods.objects.filter(is_sellwell=True, childcid=cid)
+        else:
+            productList = Goods.objects.filter(categoryid=categoryid, childcid=cid)
 
     ordername = '综合排序'
     if sortid == 1:
@@ -53,44 +62,53 @@ def market(request, categoryid, cid, sortid):
         for c in cartlist:
             if c.productid == p.productid:
                 p.num = c.productnum
+                print(p.num)
                 continue
     return render(request, 'axf/market.html', {'title':'闪送超市','leftSlider':leftSlider, 'productList':productList, 'childList':childList, 'categoryid':categoryid, 'cid':cid, 'categoryname':categoryname, 'ordername':ordername,'cartlist':cartlist})
 
 def cart(request):
     cartslist = []
+    choseflag = ' '
     token = request.session.get('token')
-    print(token)
+    tprice = 0
     if token:
         user = User.objects.get(userToken=token)
         cartslist = Cart.objects.filter(userAccount=user.userAccount)
-        print(cartslist)
-    return render(request, 'axf/cart.html', {'title':'购物车','cartslist':cartslist})
+        for each in cartslist.filter(isChose=True):
+            tprice += float(each.productprice)
+        if cartslist.count() == cartslist.filter(isChose=True).count():
+            choseflag = '√'
+    return render(request, 'axf/cart.html', {'title':'购物车','cartslist':cartslist,'tprice':('%.2f'%tprice),'choseflag':choseflag})
 
 
 def changecart(request,flag):
+    message = {}
     token = request.session.get('token')
     if token == None:
         return JsonResponse({'data':-1, 'status':'error'})
-    productid = request.POST.get('productid')
-    product = Goods.objects.get(productid=productid)
+    try:
+        productid = request.POST.get('productid')
+        product = Goods.objects.get(productid=productid)
+    except Goods.DoesNotExist:
+        pass
     user = User.objects.get(userToken=token)
+    carts = Cart.objects.filter(userAccount=user.userAccount)
     if flag == 0:
         if product.storenums == 0:
-            return JsonResponse({'data':-2,'status':'error'})
-        carts = Cart.objects.filter(userAccount=user.userAccount)
-        try:
-            c = carts.get(productid=productid)
-            c.productnum += 1
-            c.productprice = '%.2f'%(float(product.price) * c.productnum)
-            c.save()
-        except Cart.DoesNotExist as e:
-            c = Cart.createcart(user.userAccount, productid, 1, product.price, True, product.productimg,product.productlongname, False)
-            c.save()
-        product.storenums -= 1
-        product.save()
-        return JsonResponse({'data':c.productnum, 'price':c.productprice, 'status':'success'})
+            message = {'data':-2,'status':'error'}
+        else:
+            try:
+                c = carts.get(productid=productid)
+                c.productnum += 1
+                c.productprice = '%.2f'%(float(product.price) * c.productnum)
+                c.save()
+            except Cart.DoesNotExist as e:
+                c = Cart.createcart(user.userAccount, productid, 1, product.price, True, product.productimg,product.productlongname, False)
+                c.save()
+            product.storenums -= 1
+            product.save()
+            message = {'data':c.productnum, 'price':c.productprice, 'status':'success'}
     elif flag == 1:
-        carts = Cart.objects.filter(userAccount=user.userAccount)
         try:
             c = carts.get(productid=productid)
             c.productnum -= 1
@@ -99,27 +117,47 @@ def changecart(request,flag):
                 c.delete()
             else:
                 c.save()
+            product.storenums += 1
+            product.save()
+            message = {'data': c.productnum, 'price': c.productprice, 'status': 'success'}
         except Cart.DoesNotExist as e:
-            return JsonResponse({'data': -2, 'status': 'error'})
-        product.storenums += 1
-        product.save()
-        return JsonResponse({'data': c.productnum, 'price':c.productprice, 'status': 'success'})
+            message = {'data': -2, 'status': 'error'}
     elif flag == 2:
-        carts = Cart.objects.filter(userAccount=user.userAccount)
         c = carts.get(productid=productid)
         c.isChose = not c.isChose
         c.save()
         str = ''
         if c.isChose:
             str = '√'
-        return JsonResponse({'data':str, 'status':'success'})
+        message = {'data':str, 'status':'success'}
+    elif flag == 3:
+        if request.POST.get('chose') == '√':
+            for i in carts:
+                i.isChose = False
+                i.save()
+            string = ''
+        else:
+            for j in carts.filter(isChose=False):
+                j.isChose = True
+                j.save()
+            string = '√'
+        message = {'data':string, 'status':'success'}
+    tprice = 0
+    for each in carts.filter(isChose=True):
+        tprice += float(each.productprice)
+    message['totalprice'] = '%.2f' % tprice
+    message['allchose'] = ''
+    if carts.count() == carts.filter(isChose=True).count():
+        message['allchose'] = '√'
+    print(message)
+    return JsonResponse(message)
 
 
 def mine(request):
     username = request.session.get('username', '未登录')
     return render(request, 'axf/mine.html', {'title':'我的', 'username':username})
 
-from .forms.login import LoginForm
+
 def login(request):
     if request.method == 'POST':
         f = LoginForm(request.POST)
@@ -166,7 +204,6 @@ def register(request):
     else:
         return render(request, 'axf/register.html', {'title':'注册'})
 
-from django.contrib.auth import logout
 def quit(request):
     logout(request)
     return redirect('/mine/')
@@ -178,3 +215,21 @@ def checkuserid(request):
         return JsonResponse({'data':'该用户名已经被注册', 'status':'error'})
     except User.DoesNotExist as e:
         return JsonResponse({'data':'可以注册', 'status':'success'})
+
+def saveorder(request):
+    token = request.session.get('token')
+    if not token:
+        return JsonResponse({'data':-1, 'status':'error'})
+    user = User.objects.get(userToken=token)
+    carts = Cart.objects.filter(isChose=True, userAccount=user.userAccount)
+    if not carts.count():
+        return JsonResponse({'data':-1, 'status':'error'})
+    oid = time.time() + random.randrange(1, 10000)
+    oid = "%d" % oid
+    o = Order.createorder(oid, user.userAccount, 0)
+    o.save()
+    for item in carts:
+        item.isDelete = True
+        item.orderid = oid
+        item.save()
+    return JsonResponse({'status': 'success'})
