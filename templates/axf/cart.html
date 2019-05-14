@@ -11,77 +11,82 @@
     <h3><b>购物车</b></h3>
 
     <section class="full">
-		<section>
-			<ul>
-				<li>
-                    <div class="clear">
-                        <p class="infoJustify">收货人<b></b></p><p>:<span>sunck</span></p>
+        <ul>
+            <li>
+                <div class="clear">
+                    <p class="infoJustify">收货人<b></b></p><p>:<span>sunck</span></p>
+                </div>
+            </li>
+            <li>
+                <div class="clear">
+                    <p class="infoJustify">电话<b></b></p><p>:<span>12345678912</span><a class="change">修改></a></p>
+                </div>
+            </li>
+            <li>
+                <div class="clear"><p class="infoJustify">收货地址<b></b></p><p>:<span>北京市怡泰大厦</span></p>
+                </div>
+            </li>
+        </ul>
+
+
+        <section class="bill">
+            <p>闪送超市</p>
+            <p>¥0起送,22:00前满¥30免运费</p>
+            <a>凑单专区</a>
+        </section>
+
+
+        <section class="delivery">
+            <span>收货时间</span> <span>一小时送达</span> <a>可预订></a>
+        </section>
+        <section class="delivery">
+            <span>收货备注</span> <input type="text" placeholder="可输入100字以内特殊要求内容"/>
+        </section>
+
+
+        <menu>
+            <ul>
+                {% for item in cartslist%}
+                <li id="{{item.productid}}li" class="menuList">
+                    <div class="confirm">
+                        {% if item.isChose %}
+                        <span class="ischose"></span>
+                        {% else %}
+                        <span class="nochose"></span>
+                        {% endif %}
                     </div>
+                    <a href="/productpage/{{ item.productid }}/">
+                        <img src="{{item.productimg}}"/>
+                        <p>{{item.productname}}</p>
+                        <span>{{item.productprice}}</span>
+                    </a>
+                    <section>
+                        <button class="subShopping">-</button>
+                        <span id="{{item.productid}}">{{item.productnum}}</span>
+                        <button class="addShopping">+</button>
+                    </section>
                 </li>
-				<li>
-                    <div class="clear">
-                        <p class="infoJustify">电话<b></b></p><p>:<span>12345678912</span><a class="change">修改></a></p>
+                {% endfor %}
+
+                <li class="payTheBill">
+                    <div class="confirm">
+                        {% if allchose %}
+                        <span id="allc" class="ischose"></span>
+                        {% else %}
+                        <span id="allc" class="nochose"></span>
+                        {% endif %}
                     </div>
+                    <p><span>全选</span><span>共计:</span><span id='allprice'>{{ tprice }}</span></p>
+                    <span id="ok">选好了</span>
                 </li>
-				<li>
-                    <div class="clear"><p class="infoJustify">收货地址<b></b></p><p>:<span>北京市怡泰大厦</span></p>
-                    </div>
-                </li>
-			</ul>
-
-
-			<section class="bill">
-				<p>闪送超市</p>
-				<p>¥0起送,22:00前满¥30免运费</p>
-				<a>凑单专区</a>
-			</section>
-
-
-			<section class="delivery">
-				<span>收货时间</span> <span>一小时送达</span> <a>可预订></a>
-			</section>
-			<section class="delivery">
-				<span>收货备注</span> <input type="text" placeholder="可输入100字以内特殊要求内容"/>
-			</section>
-
-
-            <menu>
-				<ul>
-                    {% for item in cartslist%}
-                    <li id="{{item.productid}}li" class="menuList">
-                        <div class="confirm">
-                            <span class="ischose" goodsid="{{item.productid}}">
-                                <span id="{{item.productid}}a" class="itemchose">
-                                {% ifequal True item.isChose %}
-                                √
-                                {% endifequal %}
-                                </span>
-                            </span>
-                        </div>
-                        <a href="#">
-                            <img src="{{item.productimg}}"/>
-                            <p>{{item.productname}}</p>
-                            <span id="{{item.productid}}price" class="{{productprice}}">{{item.productprice}}</span>
-                        </a>
-                        <section>
-                            <button class="subShopping"  ga="{{item.productid}}">-</button>
-                            <span id="{{item.productid}}">{{item.productnum}}</span>
-                            <button class="addShopping"  ga="{{item.productid}}">+</button>
-                        </section>
-                    </li>
-                    {% endfor %}
-
-					<li class="payTheBill">
-						<div class="confirm"><span id="allchose"><span id="allc">
-                        {{ choseflag }}
-                        </span></span></div>
-						<p><span>全选</span><span>共计:</span><span id='allprice'>{{ tprice }}</span></p>
-						<a id="ok">选好了</a>
-					</li>
-				</ul>
-			</menu>
-		</section>
+            </ul>
+        </menu>
+        <div id="blank"></div>
 	</section>
+    <div id="noproduct">
+        <div></div>
+        <p>亲，购物车空空的耶~</p>
+        <a href="/market/104749/0/0/">去逛逛</a>
+    </div>
 </div>
-
 {% endblock base %}

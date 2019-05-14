@@ -1,0 +1,178 @@
+/**************************商品详情页的样式************************/
+
+.u-flyer{
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    position: fixed;
+    z-index: 999;
+}
+
+#page-all{
+    overflow:hidden auto;
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1.7rem;
+}
+.page-float{
+    width: 100%;
+    line-height: 1.5rem;
+    font-size: 0.45rem;
+    position: fixed;
+}
+#page-top{
+    border-bottom: 0.01rem solid #e0e0e0;
+    height: 1.5rem;
+    background-color: #f9fafd;
+    font-weight: 600;
+    text-align: center;
+}
+#page-bottom{
+    border-top: 0.01rem solid #e0e0e0;
+    bottom: 0;
+    background-color: white;
+}
+#page-top div{
+    position: absolute;
+    width: 7rem;
+    height: 1.5rem;
+    left: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#page-top a{
+    width: 1rem;
+    height: 1rem;
+    float: left;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAFiUExURUxpcZmZmZiYmJmZmZGRkZubm5mZmX9/f5iYmJmZmZeXl5mZmZqampmZmZmZmZmZmZiYmJiYmJmZmZmZmZubm5iYmJmZmZiYmJmZmZmZmZmZmZiYmKqqqpiYmJGRkZiYmJmZmZiYmKKiopmZmZmZmZiYmJmZmZOTk39/f5iYmJmZmZmZmY2NjZmZmZmZmZmZmZmZmZiYmJmZmZiYmJmZmZaWlpiYmJmZmZmZmZmZmZmZmZubm5iYmJmZmZmZmZiYmJmZmZiYmJiYmJiYmJmZmZSUlJmZmZmZmZiYmJiYmJWVlZmZmZaWlpeXl5mZmZiYmJmZmZiYmJmZmZiYmJqampqampiYmJiYmJiYmJiYmJaWlpiYmJiYmJiYmJiYmJmZmZmZmZiYmJqampaWlpeXl5mZmZmZmZmZmZmZmZiYmJmZmZiYmJmZmZiYmJiYmJiYmJiYmJmZmZmZmZeXl5mZmZmZmRmSHEgAAAB1dFJOUwCAnYoHEgoE/o8bvCHX69Dj9G74M3DVi5e1qLMGkA5t7JULpaanGRMCmsGUCXkjty3PP46MEay6++HEKTRvD4bf2fJrFBi0yX/CHXYiJf3FfXLSymAm/GbM9yfl+VJDN0bqUSwv8O7dX+9LV9PgTT459WJZ5pLKHGIAAAEbSURBVEjH7dXFcsNAFERROwYpjiFxHGZmZmZmZmbG/v+0/uB1ZetZnytNqeZpfL70+v+qDsQqFD/bD1QKfjULQKbdH+/Q95aafeoVcBftz/94A0637P49DuR82/3PF/D0YvcHucDvs92vrAOxTzN3Jlzg8Mbsgy38/EtRsw/V0g/MmX2kg76uz+yjw/QZYbMfSdD3NJr96BQw6BfOczYwPaYMjLd/aSKHeOBmlKB7ku9oU4rOLhYFjlC0N7MobBWK+iIWNeNCESpmMb8sFOEmFht7QuEEWCRulY+1uQ88XChFkjN9cqkUj3fA/ZlSXF8BR7tKcc6j6yaVIrXNwq8ck7UF728fFIqIdz+UKbtqKAHi0kSVV+XnpW/6P7TqQzbxwrmKAAAAAElFTkSuQmCC) no-repeat;
+    background-size: 1rem 1rem;
+    margin-top: 0.25rem;
+    margin-left: 0.1rem;
+}
+#page-main{
+    background-color: white;
+    text-align: center;
+}
+#page-main img{
+    width: 9rem;
+}
+#page-main p{
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+#page-main div{
+    margin-top: 0.3rem;
+    padding-bottom: 1rem;
+}
+#page-main span{
+    font-size: 0.7rem;
+    color: red;
+}
+#page-bottom div{
+    display: inline-block;
+}
+#foot_left{
+    position: relative;
+    top: 0.3rem;
+    width: 1.5rem;
+    font-size: 0.35rem;
+    line-height: 1.6rem;
+    text-align: center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAMAAABNTyq8AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAG5UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM4/8pFgAAACSdFJOUwADASAK83TwOeVQDwSR/NzBJRzbx+gMyOber3Bd8QUCmnXvJ00oy9nU7vm9j/7fESP7LJK70y0bB7pl0ST96tI8QOMQEjR+SA5Sfcr25Ga8g46XblpsgsytaVebBq6kRlx/CJlrJmdVKrXGMBUYH+n01mHaK2KMyUqsoGi2T1QZsm8UHS54MzI68oF6qPjg0NiFhuDbnwAAAbRJREFUOMuNlGdXE1EQQF+AZJOQ3kjovXfpHaSjgNKUqhSVjgXsggLSVPT+YlMgyabsYT7sztxz3+7M23dWiDuHSqt59Hg8PTFE1l6UrxhbXoVA5oSbQIxMZvmJvvAGzOTfOI0OeJitGR1OVcOG92lb65Cx8Hw1Z64Snrh8TpUd9dNMv+5Ky0VntRUhTSX5QVZ6LpZ5b/KRks3gm3eKed2KuToIGiTuCdEFX8NG2N6FvbwwMEtNgfiERTboG9DIQD3lwsNnGVvWFTfJQD+togatfM+SDfI6H0mY6FPe6C7ahY5vytIQTtHsG1EpLikTp/QYFKUUrsQJ6JUcawUNQjh4n6AgZePwXgfgZXwnr5QPvvsXdMnxnIQy6vxJYgaL8aQcHhQEsmewH9vpNpF2mxsp1cZybE5Sg0OpjuiojXbud1IU1m1SCj1tkY4XdrRFLLIfRzh1SGdy1GinsjocDFq4iGrUZsb9LlT+KEQ6j27zsJ6Spdui1ozzZ6yBq5oxfQ+kejVvrbG3zmCEX71CNB1UMNYb93O2/MY9NHBN+7RK4WD0eXx/gD/dyod18J/nb78rAv4HP9FpNT7C9VcAAAAASUVORK5CYII=) no-repeat;
+    background-size: 0.6rem 0.55rem;
+    background-position: top center;
+}
+#foot_add{
+    font-size: 0.45rem;
+}
+#foot_num div{
+    position: relative;
+    text-align: center;
+    top: 0.15rem;
+    width: 1rem;
+    height: 1rem;
+    color: #ff4300;
+    border-radius: 0.5rem;
+    border: 2px solid #e0e0e0;
+    margin-top: 0.1rem;
+}
+#subproduct{
+    font-size: 1.2rem;
+    line-height: 0.8rem;
+}
+#addproduct{
+    font-size: 1rem;
+    line-height: 1rem;
+}
+#foot_num span{
+    margin: 0.1px;
+    font-size: 0.55rem;
+}
+#shoppingcart{
+    position: fixed;
+    bottom: 0.3rem;
+    right: 0.3rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 1rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAMAAADxhdbJAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAHFUExURUxpcf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////74HNBAAAACWdFJOUwCwEOygcNBggJAEwJwFJFDw8qR+MBv+4ItLAuT9A8zfQNxUKAaOPSxmRA72+/UBjOpVM1P5a+jDZKgmtTe+F0rYZaLxDwmIXAdXbCB0cdHpjWhuuazPeK0MxdccW28+98djVnmWl0Lte11BPy+yE/xyttmYHvTORQsSxIYiMRmn83bUgrgNdSmULoHbNJIVZ5tZ3vq/61CyaTYAAAKJSURBVGje7dlnVxNBFAbgJQklMT3BJCIkKEWqghRpIh3B3pVi7733DvZe9vc6m03xgwve927m6Dnzfp6T52x25u7MHU1TUVFRUVFRUeGkzanreii5ED/jk8EZmhlnZKzwXIuez3t/wbm5jt+8LZ7CP98qx/3euqFwyPDmpc0ZR5XgZuXN0S+CeyWPiwtubymSwVGA26bDafpM59bojGwkc+0croTMLXK4lfR/s4LBjdC5HwxugM6dZnBxOredwbXRuQSDe0Ln/LhWDZQVTzPMeZGqeQPmJhDuMszNINwuVEtCn6B1KOeCuAsoVwpx5Sg3jX3Qn2FaDNw/7Jf56jStB+M2gdxLjEM33+chrQLd+32AuDDKNUp9deB2ZS3MDQBaF75xfwNwPTi3B+B241yD1Fen3aJrGzinrttkbh+Hu0PmpjhcmMzVc7gIVfvZyuHIZ8qDrAP6WypXzOImVxO5KK//8I2mdbfyuD5jx//XLY5ADbO7Uiu4cXnNHGMnXSSPuyi4I/K4zYJr9sjzgsLrPySNO5bpywSDsViyRGSFSJGIKx2v28x4WTrn7jI5F3GdJ3jcEJFbz+wVn+yuDhJK2VZ7GtRXpv3R9lQqlQgEApkaMlWczvOyTB663bVf1VXMP5ax172Vy1SfS5/swkZPtej62cgSd1ANxqXDg357LjBemFP8uuUDTpgL5fugHZw3u6SuWTVEmrKXYg6+du9o7gbKYsSB3Bo/zuce5yvG5J9HPM0N+Mjn6vPdeovv3rBdBdOIbyT7Y1UWIzpz3Akbpsq75apv485sT7jGBs7XZ/6Y23JEXcg82kVtWXiVnTuudhxe6hbp0bBT77pZrsqvioqKioqKyn+dX7jWs9PYCXZZAAAAAElFTkSuQmCC) no-repeat;
+    background-color: #ffd600;
+    background-size: 1.5rem 1.5rem;
+    background-position: center;
+    z-index: 101;
+}
+#shoppingcart>div{
+    color: white;
+    font-size: 0.4rem;
+    display: none;
+    text-align: center;
+    position: relative;
+    left: 1.3rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    line-height: 0.55rem;
+    background-color: #f40;
+    border-radius: 0.3rem;
+}
+#product_message{
+    position: relative;
+    top: 0.2rem;
+    background-color: white;
+    padding: 0.5rem;
+}
+#productline{
+    font-size: 0.45rem;
+    color: #e0bd6a;
+    text-align: center;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV8AAAAEBAMAAADbpSEyAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAqUExURQAAAOC9auC9auC9auC9auC9auC9auC9auC9auC9auC9auC9auC9auC9agdMhdkAAAANdFJOUwCZRGaID/C0S1EkGCCdfVLsAAAAM0lEQVQoz2NgIAWw3r3GQFXQe7eAgZZgMDjYhVhwgHYO5hQkGggwGBMLNtDOwVxKRAMFAOUAK2mKnCc7AAAAAElFTkSuQmCC") no-repeat center center;
+    background-size: auto 0.06rem;
+    margin-bottom: 0.5rem;
+}
+.leftside{
+    line-height: 1rem;
+    font-size: 0.45rem;
+}
+.message_left{
+    color: #848c99;
+    margin-right: 0.5rem;
+}
+#product_pic{
+    background-color: white;
+    position: relative;
+    top: 0.4rem;
+}
+#product_pic img{
+    position: relative;
+    width: 100%;
+}
+#product_pic>div>img{
+    top: 0.8rem;
+}
+#product_pic>div>div{
+    position: relative;
+    top: 0.5rem;
+    text-align: center;
+    font-size: 0.45rem;
+}

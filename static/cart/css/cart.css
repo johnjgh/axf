@@ -1,17 +1,16 @@
 #cart {
-  padding: 1.5rem 0;
-  z-index: +15;
+  padding-top: 1.5rem;
   width: 100%;
-  background: #fafafa;
+  background: #efefef;
   font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
-  overflow: hidden; }
+}
 
 h3 {
   text-align: center;
   position: fixed;
   z-index: +100;
   width: 100%;
-  border-bottom: 0.04rem solid lightgrey;
+  border-bottom: 0.02rem solid lightgrey;
   line-height: 1.5rem;
   background: white;
   top: 0; }
@@ -20,15 +19,17 @@ h3 {
 
 
 
-.full > section {
-  background: lightpink; }
+.full {
+  overflow: hidden auto;
+  height: 14.7rem;}
 
-.full > section > ul {
+.full > ul {
+  background: white;
   border: 0.2rem dashed lightgreen;
   border-width: 0.1rem 0;
   margin-bottom: 0.2rem; }
 
-.full > section > ul > li {
+.full > ul > li {
   padding-left: 0.3rem;
   line-height: 0.8rem;
   font-size: 0.375rem; }
@@ -40,11 +41,11 @@ h3 {
   clear: both;
   height: 0; }
 
-.full > section > ul > li > div > p:last-child {
+.full > ul > li > div > p:last-child {
   float: right;
   width: 78%; }
 
-.full > section > ul > li > div > p:last-child > span {
+.full > ul > li > div > p:last-child > span {
   padding: 0.15rem; }
 
 .infoJustify {
@@ -68,9 +69,10 @@ h3 {
 
 /************闪送超市********************/
 .bill {
+  background: white;
   line-height: 0.75rem;
   position: relative;
-  border-bottom: 0.04rem solid lightgrey; }
+  border-bottom: 0.02rem solid lightgrey; }
 
 .bill > p {
   padding: 0 0.3rem;
@@ -97,8 +99,9 @@ h3 {
 
 /*************收货时间*****收货备注************/
 .delivery {
+  background: white;
   line-height: 1.5rem;
-  border-bottom: 0.04rem solid lightgrey;
+  border-bottom: 0.02rem solid lightgrey;
   font-size: 0.4rem;
   padding: 0 0.3rem; }
 
@@ -124,35 +127,37 @@ h3 {
 
 
 /**************menu***************/
+.full > menu{
+  background: white;
+}
 .menuList {
-  border-bottom: 0.04rem solid lightgrey;
+  border-bottom: 0.02rem solid lightgrey;
   height: 2.5rem;
   position: relative; }
 
 .confirm {
   padding: 0.95rem 0;
   width: 15%;
-  height: 2.5rem;
+  height: 100%;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
   float: left; }
 
 .confirm > span {
-  box-sizing: border-box;
-  border: 0.04rem solid orange;
-  background: white;
   display: inline-block;
   width: 0.6rem;
   height: 0.6rem;
-  overflow: hidden;
   border-radius: 50%;
-  line-height: 0.6rem; }
+  background-size: 0.6rem 0.6rem;
+  background-position: center center; }
 
-.confirm > span > span {
-  background: yellow;
-  font-size: 0.5rem;
-  display: block; }
+.ischose{
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAGDUExURQAAAPjMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/jMC/////jOFvnWPPrdXfjNEP777P/++vjMDf732vjMDPnSKP3wufrcVvrXQf/99f/+/P70zPzsov743fnQH/vhb/754PnTLP766fjOFPvfZPraTv/87/vkfv3ywf/99PnSJ/vkfP///vzspP/99v/++fzmhfnSKvzmifjNEfraTP71z/3xu/raT/raUP3vsfnRIvjPF/zplv743vvidvjPGv3ywvnRJfzrnvnRJP720/3xvvjNEv3urvrcWCf+LIMAAABCdFJOUwAtjAt3/rYVBPuiklDWvWJzBQZB7zvt2M0Hcp06I8Hp52ls9m5dz9/9Do1+o4FTVPUJk1jxN8JeV7II+rDEDDZ4XJ6XoSYAAAGVSURBVDjLhZT3X4JQFMWfigau0ixXZWlqtvee76rZ3nvvvffuTw8F9IE8Oj/AuZcvfOA+zkOIEFvGmCs8ngozU8YidZVbAjirQGu5ClLg57BMnL9AyVhLcZ5KrXKmwYhVZKwjGT2mSJ9jijBVRRJTwtEhrkRgvG6sIbc3A/mwpnxppqVSG6rs5aFu/I/aeKifdnHy+SZz7uEXtZ3CfHzBUzxtmlmkozC/Kfh8E6wONaki8XeA1xexaERVoktcEExiAuDnW6qqECOYy5OJW6k5vjMG8DievWUYBQVzfwVwd5ax+7sAhwfEc4MoLLqHa4Dj0w2Mk9sAY5vkC46gDsmOHgHAanKRP+5tyb5iCBn6ssM7B0HrCfmPMIhQZ65cmU8zS2vycQzwy1JN1DNzAAvLiplVp2MSIhqzqem4ggllQmMhW1OjyuFbhMS5tH4Ul5i+Qi2oUEqCmc7UZyPltNMYuzMXPINJnTEZyAg79Co5N9Y6FDtGsU3J2Irz9x42HCGRSBdlH9MxpmgNxjVRE6NDmorF8lp/8o36SueIpLEAAAAASUVORK5CYII=) no-repeat;
+}
+.nochose{
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAGhUExURQAAAN3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3X9qU9wAAACKdFJOUwAC6cvmQAcWAQnoBTrr6q3CC+ORyAqoslQUI1JjxIesNzvX4dWBfR/YBklVeOItjI92GewR0/INPqY9VgwQn6LkX4BIsO+bTL5+sbQbczLQNW+zHSU5YaMOly9Q3TxxGm2OHPA4htLbnCK9gmBmjVo0blO7RIksSxj+9wj6NqGvE84uru7UBPb7wdluvYcAAAFuSURBVDjLhZPle8IwEMZLaSnuNhju7szd3d3d3d2Nv3qBMVa6NNyH9+7y/NImuTsMY1oFhjQOeSbHM+mMVB7xi+CIYN6xvnN6CSKKjMmFZgrCdCiHrbTUExUGfQxEpHK0MJZGLFxD0QJP11n2/+PlhJiW8bt7eLBjksTYX9Kl1sAvQxKjv6EY72V7lfGB/C843Cb2t9M2/3gjl88OxaULOW8KoMpgXsrqllSEgpYl2VMdbaIrun0BRHaAhmJRIN5zNER+Abn1oaE4gWE312gGE3yARkyXgN4/gVxx0NBjAkjIg4bunoCc+NHQ3j0Q1xoaku0CWXUimeRKdiL4s4MoqM+Sc0MyBDMp7M95hbKaHZqayAc1dgUbYyQKU9RQxdKbVslcIdaoVVDKJtHTsjqTthYynImZ4lLXeysZiEHnnGZu0ze22mhpuL3NLYD0zaJ9Yz/wTCWp8HEkFXJRLBc+DL6k8Ff87cEtLtE/EPsGIoMs4A6mCo8AAAAASUVORK5CYII=) no-repeat;
+}
 
 .menuList > a {
   width: 84%;
@@ -184,14 +189,15 @@ h3 {
 .menuList > section > button {
   background: white;
   border: 1px solid orange;
-  border-radius: 1111px;
+  border-radius: 0.4rem;
   color: red;
   display: inline-block;
   text-align: center;
   line-height: 0.65rem;
   font-weight: 900;
   width: 0.75rem;
-  height: 0.75rem; }
+  height: 0.75rem;
+  margin-bottom: 0.06rem}
 
 .menuList > section > span {
   display: inline-block;
@@ -200,9 +206,9 @@ h3 {
   line-height: 0.5rem;
   font-size: 0.4rem; }
 
-.presentPrice:before {
+.menuList > a > span:before {
   content: "¥";
-  font-size: 0.33rem; }
+  padding-right: 0.1rem; }
 
 
 
@@ -215,13 +221,10 @@ h3 {
   position: relative; }
 
 .payTheBill .confirm {
-  width: 10%;
-  padding-top: 0.5rem;
-  padding-left: 0.4rem; }
+  padding-top: 0.45rem; }
 
 .payTheBill > p {
-  line-height: 1.5rem;
-  text-indent: 0.3rem; }
+  line-height: 1.5rem; }
 
 .payTheBill > p > span:first-child {
   padding-right: 0.8rem; }
@@ -232,15 +235,42 @@ h3 {
 
 .payTheBill > p > span:last-child:before {
   content: "¥";
-  font-size: 0.35rem; }
+  padding-right: 0.1rem; }
 
-.payTheBill > a {
-  background: yellow;
+.payTheBill > span {
+  background: #ffd600;
   position: absolute;
   right: 0;
   line-height: 1.5rem;
   top: 0;
   padding: 0 0.7rem; }
+#blank{
+  background: #efefef;
+  height: 0.5rem;
+}
 
+/*************没有商品时的页面样式*************/
+#noproduct{
+  display: none;
+  color: #999;
+  padding-top: 2rem;
+  text-align: center;
+  line-height: 1.5rem;
+}
+#noproduct>div{
+  background: url(../img/location.png) no-repeat;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  background-size: contain;
+  margin: auto;
+}
 
-
+#noproduct>a{
+  border-color: #e0e0e0;
+  color: #999;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .1rem;
+  padding: .1rem .8rem;
+}

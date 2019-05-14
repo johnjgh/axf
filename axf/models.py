@@ -54,7 +54,6 @@ class MainShow(models.Model):
 class FoodTypes(models.Model):
     typeid = models.CharField(max_length=10)
     typename = models.CharField(max_length=20)
-    typesort = models.IntegerField()
     childtypenames = models.CharField(max_length=150)
 # 商品模型类
 class Goods(models.Model):
@@ -66,31 +65,32 @@ class Goods(models.Model):
     productname = models.CharField(max_length=50)
     # 商品长名称
     productlongname = models.CharField(max_length=100)
+    # 商品关键词
+    keywords = models.CharField(max_length=50)
     # 是否精选
     isxf = models.NullBooleanField(default=False)
-    # 是否热销
-    is_sellwell = models.BooleanField(default=False)
-    # 是否买一赠一
-    pmdesc = models.CharField(max_length=10)
+    # 商品品牌
+    brand = models.CharField(max_length=20)
     # 规格
     specifics = models.CharField(max_length=20)
+    # 保质期
+    safedays = models.CharField(max_length=20)
     # 价格
-    price = models.IntegerField()
+    price = models.FloatField()
     # 超市价格
-    marketprice = models.IntegerField()
+    marketprice = models.FloatField()
     # 组id
     categoryid = models.CharField(max_length=10)
     # 子类组id
     childcid = models.CharField(max_length=10)
     # 子类组名称
     childcidname = models.CharField(max_length=10)
-    # 详情页id
-    dealerid = models.CharField(max_length=10)
     # 库存
     storenums = models.IntegerField()
     # 销量
     productnum = models.IntegerField()
-
+    # 图文详情
+    mainimg = models.CharField(max_length=150)
 # 用户模型类
 class User(models.Model):
     # 用户账号，要唯一
@@ -109,9 +109,12 @@ class User(models.Model):
     userRank    = models.IntegerField()
     # touken验证值，每次登陆之后都会更新
     userToken   = models.CharField(max_length=50)
+    # 用户上一个访问页面的地址
+    userPreurl = models.CharField(max_length=100)
+
     @classmethod
-    def createuser(cls,account,passwd,name,phone,address,img,rank,token):
-        u = cls(userAccount = account,userPasswd = passwd,userName=name,userPhone=phone,userAdderss=address,userImg=img,userRank=rank,userToken=token)
+    def createuser(cls,account,passwd,name,phone,address,img,rank,token,preurl):
+        u = cls(userAccount = account,userPasswd = passwd,userName=name,userPhone=phone,userAdderss=address,userImg=img,userRank=rank,userToken=token,userPreurl=preurl)
         return u
 
 class CartManager1(models.Manager):
@@ -125,7 +128,7 @@ class Cart(models.Model):
     userAccount = models.CharField(max_length=20)
     productid = models.CharField(max_length=10)
     productnum = models.IntegerField()
-    productprice = models.CharField(max_length=10)
+    productprice = models.FloatField(max_length=10)
     isChose = models.BooleanField(default=True)
     productimg = models.CharField(max_length=150)
     productname = models.CharField(max_length=100)

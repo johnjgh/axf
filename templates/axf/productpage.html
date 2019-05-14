@@ -1,0 +1,72 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品主页</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'productpage/css/productpage.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'main/css/reset.css' %}">
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/jquery.fly.min.js' %}"></script>
+    <script type="text/javascript" rel="script" src="{% static 'productpage/js/productpage.js' %}"></script>
+</head>
+<body>
+    <header id="page-top" class="page-float">
+        <a href={{ preurl }}></a>
+        <div>{{ product.productlongname }}</div>
+    </header>
+    <div id="page-all">
+        <div id="page-main">
+            <img src={{ product.productimg }}>
+            <p>{{ product.productlongname }}</p>
+            <div>
+                <span>￥</span>
+                <span style="font-weight: 600;">{{ product.price }}</span>
+            </div>
+        </div>
+        <div id="product_message">
+            <div id="productline">商品详情</div>
+            <div class="leftside">
+                <span class="message_left">品<span style="visibility: hidden">种种</span>牌</span>
+                <span>{{ product.brand }}</span>
+            </div>
+            <div class="leftside">
+                <span class="message_left">产品规格</span>
+                <span>{{ product.specifics }}</span>
+            </div>
+            {% if product.safedays %}
+            <div class="leftside">
+                <span class="message_left">保质期限</span>
+                <span>{{ product.safedays }}</span>
+            </div>
+            {% endif %}
+        </div>
+        <div id="product_pic">
+            {% if product.mainimg %}
+            <div>
+                <div>图文详情</div>
+                <img src={{ product.mainimg }}>
+            </div>
+            <img src="{% static 'productpage/img/img4.jpg' %}" style="top:0.8rem">
+            {% else %}
+            <img src="{% static 'productpage/img/img4.jpg' %}">
+            {% endif %}
+        </div>
+    </div>
+    <div id="page-bottom" class="page-float">
+        <div id="foot_left">收藏</div>
+        <div id="foot_add">添加商品：</div>
+        <div id="foot_num">
+            <div id="subproduct">-</div>
+            <span ga={{ product.productid }}>{{ productnum }}</span>
+            <div id="addproduct">+</div>
+        </div>
+    </div>
+    <a id="shoppingcart" href="/cart/">
+        <div>{{ cartnum }}</div>
+    </a>
+</body>
+</html>

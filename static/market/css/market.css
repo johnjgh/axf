@@ -18,6 +18,12 @@ aside {
   overflow: hidden;
   height:100%}
 aside ul {
+  width: 2.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden auto;
   background: #fafafa; }
 aside ul li {
   list-style: none;
@@ -30,7 +36,7 @@ aside ul li {
 aside ul li a {
   display: block;
   font-size: 0.35rem;
-  color: grey;
+  color: #777;
   z-index: +1; }
 .yellowSlide {
   background: yellow;
@@ -54,15 +60,14 @@ div > section {
 
 /**********以下******全部分类****综合安排***************/
 nav {
-  top: 1.32rem;
+  top: 1.47rem;
   right: 0;
   position: fixed;
-  z-index: +1;
-  background: white;
+  z-index: 10;
   border-bottom: 0.04rem solid #e0e0e0; }
 nav ul {
   display: flex;
-  background: white;
+  background-color: rgba(255,255,255,0.9);
   height: 1.38rem;
   padding-top: 0.475rem; }
 nav ul li {
@@ -78,28 +83,32 @@ nav ul li:last-child {
 
 /************分类按钮   全部分类   综合安排****/
 nav ul li > span {
+  color: #777;
   width: 100%;
   height: 1rem;
   display: block; }
 
-
+nav>ul>li>span>span{
+    left: 0.1rem;
+}
 
 
 section menu {
-  height: 100%;
   position: relative;
   overflow: auto; }
 section menu ul {
   position: relative; }
 section menu ul li {
+  display: table;
   background: white;
   border-bottom: 0.04rem solid #e0e0e0;
   position: relative; }
 section menu ul li a {
-  display: block;
+  display: table-cell;
+  vertical-align: middle;
   height: 3rem; }
 section menu ul li a img {
-  display: block;
+  display: inline-block;
   width: 2.8rem;
   float: left; }
 
@@ -109,13 +118,12 @@ section menu ul li a img {
 .shoppingInfo {
   width: 4.6rem;
   float: right;
-  font-size: 0.35rem; }
+  font-size: 0.4rem; }
 
 .shoppingInfo h6 {
   margin: 0.1rem 0 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 0.5rem;
   white-space: nowrap;
   font-weight: 500;
   font-size: 0.38rem; }
@@ -137,14 +145,14 @@ section menu ul li a img {
 .unit {
   color: grey;
   position: absolute;
-  bottom: 1rem; }
+  bottom: 0.94rem; }
 .price {
   position: absolute;
   bottom: 0.15rem;
-  font-weight: 200;
+  font-weight: 500;
   margin: 0.2rem 0; }
 .price > span {
-  padding: 0 0.35rem 0 0;
+  padding: 0 0.1rem 0 0;
   color: red; }
 .price > s {
   color: grey; }
@@ -154,54 +162,85 @@ section menu ul li a img {
 
 
 /**添加到购物车****/
-li > section {
+.productnum {
   position: absolute;
   right: 0.4rem;
-  bottom: 0.4rem;
-  height: 0.75rem;
-  border-radius: 1rem; }
+  bottom: 0.25rem;
+  height: 0.75rem;}
 section > button {
   background: white;
   border: 1px solid orange;
-  border-radius: 1111px;
+  border-radius: 0.6rem;
   color: red;
   display: inline-block;
   text-align: center;
-  line-height: 0.55rem;
+  line-height: 0.5rem;
   font-weight: 900;
-  width: 0.5rem;
-  height: 0.5rem; }
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-bottom: 0.1rem;
+  padding-bottom: 0.03rem; }
 li > section > span {
   display: inline-block;
-  width: 0.4rem;
   text-align: center;
   line-height: 0.4rem; }
 .subShopping {
-  font-size: 0.8rem;
-  font-weight: 100; }
+font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 0.3rem;
+    padding-bottom: 0.1rem;}
 
 
 
 
 /************分类********************************/
 section menu > div {
-  position: fixed;
-  top: 2.7rem;
-  left: 2.55rem;
-  width: 7.45rem;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: grey; }
+    display: none;
+    position: fixed;
+    top: 2.7rem;
+    left: 2.55rem;
+    width: 7.45rem;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
 
 section menu > div > div {
-  background: white;
-  padding-bottom: 0.3rem; }
+    background: rgba(255,255,255,0.9);
+    padding-bottom: 0.3rem;
+    padding-top: 0.2rem;
+}
 
 section menu > div > div > a > span {
-  border: 0.04rem solid #e0e0e0;
-  padding: 0.1rem 0.2rem;
-  margin-left: 0.3rem;
-  border-radius: 0.2rem;
-  font-size: 0.375rem;
-  display: inline-block;
-  margin-top: 0.3rem; }
+    color: #777;
+    border: 0.04rem solid #e0e0e0;
+    padding: 0.1rem 0.2rem;
+    margin-left: 0.3rem;
+    border-radius: 0.2rem;
+    font-size: 0.375rem;
+    display: inline-block;
+    margin-top: 0.3rem; }
+
+/************超市商品右下角的购物车********************************/
+.shoppingcart{
+    width: 1.2rem;
+    height: 1.2rem;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAMAAADxhdbJAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAHFUExURUxpcf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////74HNBAAAACWdFJOUwCwEOygcNBggJAEwJwFJFDw8qR+MBv+4ItLAuT9A8zfQNxUKAaOPSxmRA72+/UBjOpVM1P5a+jDZKgmtTe+F0rYZaLxDwmIXAdXbCB0cdHpjWhuuazPeK0MxdccW28+98djVnmWl0Lte11BPy+yE/xyttmYHvTORQsSxIYiMRmn83bUgrgNdSmULoHbNJIVZ5tZ3vq/61CyaTYAAAKJSURBVGje7dlnVxNBFAbgJQklMT3BJCIkKEWqghRpIh3B3pVi7733DvZe9vc6m03xgwve927m6Dnzfp6T52x25u7MHU1TUVFRUVFRUeGkzanreii5ED/jk8EZmhlnZKzwXIuez3t/wbm5jt+8LZ7CP98qx/3euqFwyPDmpc0ZR5XgZuXN0S+CeyWPiwtubymSwVGA26bDafpM59bojGwkc+0croTMLXK4lfR/s4LBjdC5HwxugM6dZnBxOredwbXRuQSDe0Ln/LhWDZQVTzPMeZGqeQPmJhDuMszNINwuVEtCn6B1KOeCuAsoVwpx5Sg3jX3Qn2FaDNw/7Jf56jStB+M2gdxLjEM33+chrQLd+32AuDDKNUp9deB2ZS3MDQBaF75xfwNwPTi3B+B241yD1Fen3aJrGzinrttkbh+Hu0PmpjhcmMzVc7gIVfvZyuHIZ8qDrAP6WypXzOImVxO5KK//8I2mdbfyuD5jx//XLY5ADbO7Uiu4cXnNHGMnXSSPuyi4I/K4zYJr9sjzgsLrPySNO5bpywSDsViyRGSFSJGIKx2v28x4WTrn7jI5F3GdJ3jcEJFbz+wVn+yuDhJK2VZ7GtRXpv3R9lQqlQgEApkaMlWczvOyTB663bVf1VXMP5ax172Vy1SfS5/swkZPtej62cgSd1ANxqXDg357LjBemFP8uuUDTpgL5fugHZw3u6SuWTVEmrKXYg6+du9o7gbKYsSB3Bo/zuce5yvG5J9HPM0N+Mjn6vPdeovv3rBdBdOIbyT7Y1UWIzpz3Akbpsq75apv485sT7jGBs7XZ/6Y23JEXcg82kVtWXiVnTuudhxe6hbp0bBT77pZrsqvioqKioqKyn+dX7jWs9PYCXZZAAAAAElFTkSuQmCC);
+    background-size: 1.2rem 1.2rem;
+    background-color: #ffd600;
+    border-radius: 0.6rem;
+    background-position: 0.01rem 0.055rem;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.2rem;
+}
+
+
+/********************超市商品飞入购物车********************************/
+.u-flyer{
+    display: block;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 1.4rem;
+    position: fixed;
+    z-index: 999;
+}

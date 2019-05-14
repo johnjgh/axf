@@ -16,6 +16,7 @@
     <script type="text/javascript" charset="utf-8" src="{% static 'main/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" charset="utf-8" src="{% static 'main/js/swiper.min.js' %}"></script>
     <script type="text/javascript" charset="utf-8" src="{% static 'main/js/base.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'main/js/jquery.fly.min.js' %}"></script>
 
     {% block linkscript %}
     {% endblock linkscript %}
@@ -44,7 +45,10 @@
         </a>
         <a class="cart" href="/cart/">
             <dl>
-                <dt><span></span></dt>
+                <dt>
+                    <span></span>
+                    <div>{{ cartnum }}</div>
+                </dt>
                 <dd>购物车</dd>
             </dl>
         </a>
